@@ -23,11 +23,6 @@
     var leftPressed = false;
     var upPressed = false;
     var downPressed = false;
-    var line1passed = false;
-    var line2passed = false;
-    var line3passed = false;
-    var line4passed = false;
-    var line5passed = false;
 
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
@@ -122,22 +117,6 @@
         drawEnd();
         drawRect();
         drawMaze();
-
-        if(y + rectHeight > canvas.height/6) {
-            line1passed = true;
-        }
-        if(y + rectHeight > (canvas.height/6)*2 && y + rectHeight < (canvas.height/6)*3) {
-            line2passed = true;
-        }
-        if(y + rectHeight > (canvas.height/6)*3 && y + rectHeight < (canvas.height/6)*4) {
-            line3passed = true;
-        }
-        if(y + rectHeight > (canvas.height/6)*4 && y + rectHeight < (canvas.height/6)*5) {
-            line4passed = true;
-        }
-        if(y + rectHeight > (canvas.height/6)*5 && y + rectHeight < canvas.height) {
-            line5passed = true;
-        }      
         
         if(rightPressed) {
             x += 3.5;
@@ -154,21 +133,21 @@
         else if(downPressed) {
             y += 3.5;
             if (y + rectHeight > canvas.height){
-                y -=3.5;
-            }
-            else if (y + rectHeight > canvas.height/6 && x < 430 && y !== (y + rectHeight > canvas.height/6) && line1passed === false) {
                 y -= 3.5;
             }
-            else if (y + rectHeight > (canvas.height/6)*2 && x > 50 && y !== (y + rectHeight > (canvas.height/6)*2) && line2passed === false) {
+            else if (y + rectHeight > canvas.height/6 && y + rectHeight < (canvas.height/6)*2 && x < 430) {
                 y -= 3.5;
             }
-            else if (y + rectHeight > (canvas.height/6)*3 && x < 430 && y !== (y + rectHeight > (canvas.height/6)*3) && line3passed === false) {
+            else if (y + rectHeight > (canvas.height/6)*2 && y + rectHeight < (canvas.height/6)*3 && x > 50) {
                 y -= 3.5;
             }
-            else if (y + rectHeight > (canvas.height/6)*4 && x > 50 && y !== (y + rectHeight > (canvas.height/6)*4) && line4passed === false) {
+            else if (y + rectHeight > (canvas.height/6)*3 && y + rectHeight < (canvas.height/6)*4 && x < 430) {
                 y -= 3.5;
             }
-            else if (y + rectHeight > (canvas.height/6)*5 && x < 430 && y !== (y + rectHeight > (canvas.height/6)*5) && line5passed === false) {
+            else if (y + rectHeight > (canvas.height/6)*4 && y + rectHeight < (canvas.height/6)*5 && x > 50) {
+                y -= 3.5;
+            }
+            else if (y + rectHeight > (canvas.height/6)*5 && y + rectHeight < canvas.height && x < 430) {
                 y -= 3.5;
             }
         }
@@ -177,19 +156,19 @@
             if (y < 0){
                 y += 3.5;
             }
-            else if (y - rectHeight > (canvas.height/6)*5 && x < 430 && y !== (y - rectHeight > (canvas.height/6)*5) && line5passed === true) {
+            else if (y + rectHeight > canvas.height/6 && y + rectHeight < (canvas.height/6)*2 && x < 430) {
                 y += 3.5;
             }
-            else if (y + rectHeight > (canvas.height/6)*4 && x > 50 && y !== (y + rectHeight > (canvas.height/6)*4) && line4passed === true) {
+            else if (y + rectHeight > (canvas.height/6)*2 && y + rectHeight < (canvas.height/6)*3 && x > 50) {
                 y += 3.5;
             }
-            else if (y + rectHeight > (canvas.height/6)*3 && x < 430 && y !== (y + rectHeight > (canvas.height/6)*3) && line3passed === true) {
+            else if (y + rectHeight > (canvas.height/6)*3 && y + rectHeight < (canvas.height/6)*4 && x < 430) {
                 y += 3.5;
             }
-            else if (y + rectHeight > (canvas.height/6)*2 && x > 50 && y !== (y + rectHeight > (canvas.height/6)*2) && line2passed === true) {
+            else if (y + rectHeight > (canvas.height/6)*4 && y + rectHeight < (canvas.height/6)*5 && x > 50) {
                 y += 3.5;
             }
-            else if (y + rectHeight > canvas.height/6 && x < 430 && y !== (y + rectHeight > canvas.height/6) && line1passed === true) {
+            else if (y + rectHeight > (canvas.height/6)*5 && y + rectHeight < canvas.height && x < 430) {
                 y += 3.5;
             }
         }
