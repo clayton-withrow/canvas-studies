@@ -23,6 +23,7 @@
     var leftPressed = false;
     var upPressed = false;
     var downPressed = false;
+    var anyKey = false;
 
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
@@ -40,6 +41,9 @@
         else if(e.key == "Down" || e.key == "ArrowDown") {
             downPressed = true;
         }
+        else if(e.key == "Enter") {
+            anyKey = true;
+        }
     }
 
     function keyUpHandler(e) {
@@ -54,6 +58,9 @@
         }
         else if(e.key == "Down" || e.key == "ArrowDown") {
             downPressed = false;
+        }
+        else if(e.key == "Enter") {
+            anyKey = false;
         }
     }
 
@@ -109,6 +116,12 @@
         ctx.fillStyle = "red";
         ctx.fill();
         ctx.closePath();
+    }
+
+    function drawCongrat() {
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("CONGRATULATIONS! PRESS ENTER TO REPLAY", canvas.width/7, canvas.height/2);
     }
 
     function draw() {
@@ -188,6 +201,13 @@
             }
             else if (y + rectHeight > (canvas.height/6)*5 && y + rectHeight < canvas.height && x < 430) {
                 y += 3.5;
+            }
+        }
+        if (x === 0 && y === 266) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawCongrat();
+            if (anyKey === true) {
+                document.location.reload();
             }
         }
     }
