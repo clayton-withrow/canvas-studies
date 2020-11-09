@@ -18,7 +18,7 @@
     var x = canvas.width-480;
     var y = canvas.height-320;
     var rectHeight = (canvas.height/6);
-    var rectWidth = 25;
+    var rectWidth = 49;
     var rightPressed = false;
     var leftPressed = false;
     var upPressed = false;
@@ -123,10 +123,28 @@
             if (x + rectWidth > canvas.width){
                 x -= 3.5;
             }
+            else if (y + rectHeight >= ((canvas.height/6)*2)+4 && y <= ((canvas.height/6)*2)-4 && x + rectWidth >= rectWidth) {
+                x -= 3.5;
+            }
+            else if (y + rectHeight >= ((canvas.height/6)*4)+4 && y <= ((canvas.height/6)*4)-4 && x + rectWidth >= rectWidth) {
+                x -= 3.5;
+            }
         }
         else if(leftPressed) {
             x -= 3.5;
             if (x < 0){
+                x += 3.5;
+            }
+            else if (y <= 0 && x <= 430) {
+                x += 0;
+            }
+            else if (y + rectHeight >= (canvas.height/6) && y <= (canvas.height/6)-4 && x <= 430) {
+                x += 3.5;
+            }
+            else if (y + rectHeight >= ((canvas.height/6)*3)+4 && y <= ((canvas.height/6)*3)-4 && x <= 430) {
+                x += 3.5;
+            }
+            else if (y + rectHeight >= ((canvas.height/6)*5)+4 && y <= ((canvas.height/6)*5)-4 && x <= 430) {
                 x += 3.5;
             }
         }
@@ -138,16 +156,16 @@
             else if (y + rectHeight > canvas.height/6 && y + rectHeight < (canvas.height/6)*2 && x < 430) {
                 y -= 3.5;
             }
-            else if (y + rectHeight > (canvas.height/6)*2 && y + rectHeight < (canvas.height/6)*3 && x > 50) {
+            else if (y + rectHeight > (canvas.height/6)*2 && y + rectHeight < (canvas.height/6)*3 && x + rectWidth > 50) {
                 y -= 3.5;
             }
             else if (y + rectHeight > (canvas.height/6)*3 && y + rectHeight < (canvas.height/6)*4 && x < 430) {
                 y -= 3.5;
             }
-            else if (y + rectHeight > (canvas.height/6)*4 && y + rectHeight < (canvas.height/6)*5 && x > 50) {
+            else if (y + rectHeight > (canvas.height/6)*4 && y + rectHeight < (canvas.height/6)*5 && x + rectWidth > 50) {
                 y -= 3.5;
             }
-            else if (y + rectHeight > (canvas.height/6)*5 && y + rectHeight < canvas.height && x < 430) {
+            else if (y + rectHeight > ((canvas.height/6)*5)+1 && y + rectHeight < canvas.height+1 && x < 430) {
                 y -= 3.5;
             }
         }
@@ -159,13 +177,13 @@
             else if (y + rectHeight > canvas.height/6 && y + rectHeight < (canvas.height/6)*2 && x < 430) {
                 y += 3.5;
             }
-            else if (y + rectHeight > (canvas.height/6)*2 && y + rectHeight < (canvas.height/6)*3 && x > 50) {
+            else if (y + rectHeight > (canvas.height/6)*2 && y + rectHeight < (canvas.height/6)*3 && x + rectWidth > 50) {
                 y += 3.5;
             }
             else if (y + rectHeight > (canvas.height/6)*3 && y + rectHeight < (canvas.height/6)*4 && x < 430) {
                 y += 3.5;
             }
-            else if (y + rectHeight > (canvas.height/6)*4 && y + rectHeight < (canvas.height/6)*5 && x > 50) {
+            else if (y + rectHeight > (canvas.height/6)*4 && y + rectHeight < (canvas.height/6)*5 && x + rectWidth > 50) {
                 y += 3.5;
             }
             else if (y + rectHeight > (canvas.height/6)*5 && y + rectHeight < canvas.height && x < 430) {
