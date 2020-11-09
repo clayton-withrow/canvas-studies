@@ -103,7 +103,7 @@
 
     function drawLeftPaddle() {
         ctx.beginPath();
-        ctx.rect(leftPaddleWidth, leftPaddleY, leftPaddleWidth, leftPaddleHeight);
+        ctx.rect(0, leftPaddleY, leftPaddleWidth, leftPaddleHeight);
         ctx.fillStyle = "#0095DD";
         ctx.fill();
         ctx.closePath();
@@ -111,10 +111,28 @@
 
     function drawRightPaddle() {
         ctx.beginPath();
-        ctx.rect(canvas.width-(rightPaddleWidth*2), rightPaddleY, rightPaddleWidth, rightPaddleHeight);
+        ctx.rect(canvas.width-rightPaddleWidth, rightPaddleY, rightPaddleWidth, rightPaddleHeight);
         ctx.fillStyle = "#0095DD";
         ctx.fill();
         ctx.closePath();
+    }
+
+    function drawScore() {
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("Left Score: "+ leftCounter, 8, 20);
+
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("Right Score: "+ rightCounter, 370, 20);
+
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("W=UP, S=DOWN", 8, 300);
+
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("USE D-PAD", 370, 300);
     }
 
     function draw() {
@@ -122,9 +140,16 @@
         drawBall();
         drawLeftPaddle();
         drawRightPaddle();
+        drawScore();
         ballx += balldx;
         bally += balldy;
 
+
+        if(ballx + balldx > canvas.width-ballRadius) {
+            if(bally > rightPaddleY && bally < rightPaddleY + rightPaddleHeight) {
+                balldx = -balldx;
+            }
+        }
         if(ballx + balldx > canvas.width-ballRadius) {
             balldx = -balldx;
             leftCounter++;
@@ -132,25 +157,31 @@
             determineDirection();
             ballx = canvas.width/2;
             bally = canvas.height/2;
-            if (leftCounter === 5) {
+        }
+        if (leftCounter === 5) {
                 alert("GAME OVER. LEFT PLAYER WINS.");
                 document.location.reload();
                 clearInterval(interval); // Needed for Chrome to end game
             }
+
+        if(ballx + balldx < ballRadius) {
+            if(bally > leftPaddleY && bally < leftPaddleY + leftPaddleHeight) {
+                balldx = -balldx;
+            }
         }
-        else if (ballx + balldx < ballRadius) {
+        if (ballx + balldx < ballRadius) {
             balldx = -balldx;
             rightCounter++;
             console.log("right player: " + rightCounter);
             determineDirection();
             ballx = canvas.width/2;
             bally = canvas.height/2
-            if (rightCounter === 5) {
+        }
+        if (rightCounter === 5) {
                 alert("GAME OVER. RIGHT PLAYER WINS.");
                 document.location.reload();
                 clearInterval(interval); // Needed for Chrome to end game
             }
-        }
 
         if(bally + balldy > canvas.height-ballRadius || bally + balldy < ballRadius) {
             balldy = -balldy;
