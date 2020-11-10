@@ -106,6 +106,7 @@ a {
         flex-direction: column;
         order: 0;
         margin-left: 20px;
+        padding-right: 20px;
     }
 
     .thumbnail-item {

@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Pong</title>
-    <style>
-    	* { padding: 0; margin: 0; }
-    	canvas { background: #eee; display: block; margin: 0 auto; }
-    </style>
-</head>
-<body>
-
-<canvas id="pongCanvas" width="480" height="320"></canvas>
-
-<script>
-
-	var canvas = document.getElementById("pongCanvas");
+var canvas = document.getElementById("pongCanvas");
     var ctx = canvas.getContext("2d");
     var ballRadius = 10;
     var ballx = canvas.width/2;
@@ -100,7 +84,6 @@
         ctx.fill();
         ctx.closePath();
     }
-
 
     function drawBall() {
         ctx.beginPath();
@@ -227,8 +210,3 @@
 
     determineDirection();
     var interval = setInterval(draw, 10);
-
-</script>
-
-</body>
-</html>

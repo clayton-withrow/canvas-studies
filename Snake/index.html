@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="480" height="320"></canvas>
+<canvas id="snakeCanvas" width="480" height="320"></canvas>
 
 <script>
     let snake = [  {x: 240, y: 160},
@@ -29,7 +29,7 @@
     // Vertical velocity
     let dy = 0;
 
-    var canvas = document.getElementById("myCanvas");
+    var canvas = document.getElementById("snakeCanvas");
     var ctx = canvas.getContext("2d");
 
     main();
@@ -49,6 +49,7 @@
         changing_direction = false;
         setTimeout(function onTick() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawCanvas();
             drawFood();
             move_snake();
             drawSnake();
@@ -56,6 +57,14 @@
             // Call main again
             main();
         }, 100)
+    }
+
+    function drawCanvas() {
+        ctx.beginPath();
+        ctx.rect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.closePath();
     }
 
     /*Function that prints the parts*/
