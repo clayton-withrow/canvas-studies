@@ -16,6 +16,7 @@ var canvas = document.getElementById("pongCanvas");
     var sPressed = false;
     var upPressed = false;
     var downPressed = false;
+    var enterPressed = false;
     var leftCounter = 0;
     var rightCounter = 0;
     var interval;
@@ -35,6 +36,9 @@ var canvas = document.getElementById("pongCanvas");
         }
         else if(e.key == "Down" || e.key == "ArrowDown") {
             downPressed = true;
+        }
+        else if(e.key == "Enter") {
+            enterPressed = true;
         }
     }
 
@@ -125,6 +129,10 @@ var canvas = document.getElementById("pongCanvas");
         ctx.font = "16px Arial";
         ctx.fillStyle = "#0095DD";
         ctx.fillText("USE D-PAD", 840, 620);
+
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("Press Enter To Start", canvas.width/2-75, 20);
     }
 
     function draw() {
@@ -134,9 +142,11 @@ var canvas = document.getElementById("pongCanvas");
         drawLeftPaddle();
         drawRightPaddle();
         drawScore();
-        ballx += balldx;
-        bally += balldy;
 
+        if(enterPressed) {
+            ballx += balldx;
+            bally += balldy;
+        }
 
         if(ballx + balldx > canvas.width-ballRadius) {
             if(bally > rightPaddleY && bally < rightPaddleY + rightPaddleHeight) {

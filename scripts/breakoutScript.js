@@ -3,14 +3,15 @@ var ctx = canvas.getContext("2d");
 
 var x = canvas.width/2;
 var y = canvas.height-30;
-var dx = 2;
-var dy = -2;
+var dx = 4;
+var dy = -4;
 var ballRadius = 20;
 var paddleHeight = 20;
 var paddleWidth = 150;
 var paddleX = (canvas.width-paddleWidth) / 2;
 var rightPressed = false;
 var leftPressed = false;
+var enterPressed = false;
 var brickRowCount = 3;
 var brickColumnCount = 5;
 var brickWidth = 150;
@@ -38,6 +39,9 @@ if(e.key == "Right" || e.key == "ArrowRight") {
     }
     else if(e.key == "Left" || e.key == "ArrowLeft") {
         leftPressed = true;
+    }
+    else if(e.key == "Enter") {
+        enterPressed = true;
     }
 }
 
@@ -89,6 +93,12 @@ function drawLives() {
     ctx.fillText("Lives: "+lives, canvas.width-65, 20);
 }
 
+function drawInstructions() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Press Enter To Start", canvas.width/2-75, 20);
+}
+
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
@@ -131,6 +141,7 @@ function draw() {
     drawPaddle();
     drawScore();
     drawLives();
+    drawInstructions();
     collisionDetection();
     
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
@@ -151,8 +162,8 @@ function draw() {
             else {
                 x = canvas.width/2;
                 y = canvas.height-30;
-                dx = 2;
-                dy = -2;
+                dx = 4;
+                dy = -4;
                 paddleX = (canvas.width-paddleWidth)/2;
             }
         }
@@ -170,10 +181,21 @@ function draw() {
             paddleX = 0;
         }
     }
-    
-    x += dx;
-    y += dy;
+
+    if(enterPressed) {
+        x += dx;
+        y += dy;
+    }
     requestAnimationFrame(draw);
+}
+
+function intro() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawCanvas();
+
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Press Enter to Start", 8, 20);
 }
 
 draw();

@@ -10,6 +10,7 @@ var canvas = document.getElementById("birdCanvas");
     var leftPressed = false;
     var upPressed = false;
     var downPressed = false;
+    var enterPressed = false;
     var linex = 950;
     var lineCounter = 0;
     var segment1 = 100;
@@ -24,6 +25,9 @@ var canvas = document.getElementById("birdCanvas");
         }
         else if(e.key == "Down" || e.key == "ArrowDown") {
             downPressed = true;
+        }
+        else if(e.key == "Enter") {
+            enterPressed = true;
         }
     }
 
@@ -74,6 +78,10 @@ var canvas = document.getElementById("birdCanvas");
         ctx.font = "16px Arial";
         ctx.fillStyle = "black";
         ctx.fillText("Score: "+ score, 8, 20);
+
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Press Enter To Start", canvas.width/2-75, 20);
     }
 
     function gameOver() {
@@ -103,14 +111,16 @@ var canvas = document.getElementById("birdCanvas");
         }
 
         drawLine1();
-        
-        linex -= 2;
-        lineCounter += 2;
 
-        if (lineCounter === 960) {
-            segment1 = Math.floor((Math.random() * 300) + 1);
-            linex = 960;
-            lineCounter = 0;
+        if(enterPressed){
+            linex -= 2;
+            lineCounter += 2;
+
+            if (lineCounter === 960) {
+                segment1 = Math.floor((Math.random() * 300) + 1);
+                linex = 960;
+                lineCounter = 0;
+            }
         }
 
 
