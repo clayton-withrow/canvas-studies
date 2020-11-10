@@ -10,10 +10,10 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="480" height="320"></canvas>
+<canvas id="mazeCanvas" width="480" height="320"></canvas>
 
 <script>
-	var canvas = document.getElementById("myCanvas");
+	var canvas = document.getElementById("mazeCanvas");
     var ctx = canvas.getContext("2d");
     var x = canvas.width-480;
     var y = canvas.height-320;
@@ -57,6 +57,13 @@
         }
     }
 
+    function drawCanvas() {
+        ctx.beginPath();
+        ctx.rect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.closePath();
+    }
 
     function drawRect() {
         ctx.beginPath();
@@ -114,6 +121,7 @@
 
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawCanvas();
         drawBegin();
         drawEnd();
         drawRect();

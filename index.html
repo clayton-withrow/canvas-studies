@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Canvas Studies</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+        <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+        <link rel="stylesheet" href="stylesheets/styles.css">
+    </head>
+    <body>
+        <header class="main-header">
+            <h1 class="logo-text">Canvas Studies</h1>
+        </header>
+        <main class="main-content">
+            <ul class="thumbnail-list">
+                <li class="thumbnail-item">
+                    <a href="#">
+                        <img class="thumbnail-image" src="img/breakoutScreenshot.png" alt="BreakOut">
+                        <span class="thumbnail-title">BreakOut</span>
+                    </a>
+                </li>
+                <li class="thumbnail-item">
+                    <a href="#">
+                        <img class="thumbnail-image" src="img/mazeScreenshot.png" alt="Maze">
+                        <span class="thumbnail-title">Maze</span>
+                    </a>
+                </li>
+                <li class="thumbnail-item">
+                    <a href="#">
+                        <img class="thumbnail-image" src="img/pongScreenshot.png" alt="Pong">
+                        <span class="thumbnail-title">Pong</span>
+                    </a>
+                </li>
+                <li class="thumbnail-item">
+                    <a href="#">
+                        <img class="thumbnail-image" src="img/snakeScreenshot.png" alt="Snake">
+                        <span class="thumbnail-title">Snake</span>
+                    </a>
+                </li>
+                <li class="thumbnail-item">
+                    <a href="#">
+                        <img class="thumbnail-image" src="img/birdScreenshot.png" alt="Bird">
+                        <span class="thumbnail-title">Bird</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="detail-image-container">
+                <div class="detail-image-frame">
+                    <canvas id="mazeCanvas" width="480" height="320"></canvas>
+                </div>
+            </div>
+        </main>
+    <script src="breakoutScript.js"></script>
+    <script src="mazeScript.js"></script>
+    </body>
+</html>
