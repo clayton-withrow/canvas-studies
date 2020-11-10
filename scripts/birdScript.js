@@ -1,8 +1,8 @@
 var canvas = document.getElementById("birdCanvas");
     var ctx = canvas.getContext("2d");
-    var rectWidth = 50;
-    var rectHeight = 50;
-    var rectx = 20;
+    var rectWidth = 100;
+    var rectHeight = 100;
+    var rectx = 40;
     var recty = canvas.height/2;
     var rectdx = 1;
     var rectdy = 1;
@@ -10,9 +10,9 @@ var canvas = document.getElementById("birdCanvas");
     var leftPressed = false;
     var upPressed = false;
     var downPressed = false;
-    var linex = 475;
+    var linex = 950;
     var lineCounter = 0;
-    var segment1 = 50;
+    var segment1 = 100;
     var score = 0;
 
     document.addEventListener("keydown", keyDownHandler, false);
@@ -54,8 +54,8 @@ var canvas = document.getElementById("birdCanvas");
         ctx.moveTo(linex, 0);
         ctx.lineTo(linex, segment1);
         //Second Segment
-        ctx.moveTo(linex, segment1+100);
-        ctx.lineTo(linex, 320);
+        ctx.moveTo(linex, segment1+200);
+        ctx.lineTo(linex, 640);
 
         ctx.stroke();
     }
@@ -89,19 +89,7 @@ var canvas = document.getElementById("birdCanvas");
         drawRect();
         drawScore();
         
-        if( rightPressed) {
-            rectx += 3;
-            if (rectx + rectWidth > canvas.width){
-                rectx = canvas.width - rectWidth;
-            }
-        }
-        else if (leftPressed) {
-            rectx -= 3;
-            if (rectx < 0){
-                rectx = 0;
-            }
-        }
-        else if (upPressed) {
+        if (upPressed) {
             recty -= 3;
             if (recty < 0){
                 recty = 0;
@@ -116,12 +104,12 @@ var canvas = document.getElementById("birdCanvas");
 
         drawLine1();
         
-        linex -= 1;
-        lineCounter += 1;
+        linex -= 2;
+        lineCounter += 2;
 
-        if (lineCounter === 480) {
-            segment1 = Math.floor((Math.random() * 150) + 1);
-            linex = 480;
+        if (lineCounter === 960) {
+            segment1 = Math.floor((Math.random() * 300) + 1);
+            linex = 960;
             lineCounter = 0;
         }
 
@@ -129,13 +117,13 @@ var canvas = document.getElementById("birdCanvas");
         if(rectx + rectWidth === linex && recty < segment1) {
             gameOver();
         }
-        if(rectx + rectWidth === linex && recty + rectHeight > segment1+100){
+        if(rectx + rectWidth === linex && recty + rectHeight > segment1+200){
             gameOver();
         }
         if(rectx === linex && recty < segment1) {
             gameOver();
         }
-        if(rectx === linex && recty + rectHeight > segment1+100){
+        if(rectx === linex && recty + rectHeight > segment1+200){
             gameOver();
         }
         if(rectx === linex) {

@@ -1,16 +1,16 @@
 var canvas = document.getElementById("pongCanvas");
     var ctx = canvas.getContext("2d");
-    var ballRadius = 10;
+    var ballRadius = 20;
     var ballx = canvas.width/2;
     var bally = canvas.height/2;
     var direction = 0;
     var balldx = 0;
     var balldy = 0;
-    var leftPaddleHeight = 75;
-    var leftPaddleWidth = 10;
+    var leftPaddleHeight = 150;
+    var leftPaddleWidth = 20;
     var leftPaddleY = (canvas.height-leftPaddleHeight) / 2;
-    var rightPaddleHeight = 75;
-    var rightPaddleWidth = 10;
+    var rightPaddleHeight = 150;
+    var rightPaddleWidth = 20;
     var rightPaddleY = (canvas.height-rightPaddleHeight) / 2;
     var wPressed = false;
     var sPressed = false;
@@ -116,15 +116,15 @@ var canvas = document.getElementById("pongCanvas");
 
         ctx.font = "16px Arial";
         ctx.fillStyle = "#0095DD";
-        ctx.fillText("Right Score: "+ rightCounter, 370, 20);
+        ctx.fillText("Right Score: "+ rightCounter, 840, 20);
 
         ctx.font = "16px Arial";
         ctx.fillStyle = "#0095DD";
-        ctx.fillText("W=UP, S=DOWN", 8, 300);
+        ctx.fillText("W=UP, S=DOWN", 8, 620);
 
         ctx.font = "16px Arial";
         ctx.fillStyle = "#0095DD";
-        ctx.fillText("USE D-PAD", 370, 300);
+        ctx.fillText("USE D-PAD", 840, 620);
     }
 
     function draw() {

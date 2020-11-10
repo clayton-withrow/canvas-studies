@@ -1,9 +1,9 @@
 var canvas = document.getElementById("mazeCanvas");
 var ctx = canvas.getContext("2d");
-var x = canvas.width-480;
-var y = canvas.height-320;
+var x = canvas.width-960;
+var y = canvas.height-640;
 var rectHeight = (canvas.height/6);
-var rectWidth = 49;
+var rectWidth = 98;
 var rightPressed = false;
 var leftPressed = false;
 var upPressed = false;
@@ -70,26 +70,26 @@ function drawMaze() {
     ctx.strokeStyle = "black";
     //First Line
     ctx.moveTo(0, canvas.height/6);
-    ctx.lineTo(430, canvas.height/6);
+    ctx.lineTo(860, canvas.height/6);
     //Second Line
-    ctx.moveTo(480, (canvas.height/6)*2);
-    ctx.lineTo(50, (canvas.height/6)*2);
+    ctx.moveTo(960, (canvas.height/6)*2);
+    ctx.lineTo(100, (canvas.height/6)*2);
     //Third Line
     ctx.moveTo(0, (canvas.height/6)*3);
-    ctx.lineTo(430, (canvas.height/6)*3);
+    ctx.lineTo(860, (canvas.height/6)*3);
     //Fourth Line
-    ctx.moveTo(480, (canvas.height/6)*4);
-    ctx.lineTo(50, (canvas.height/6)*4);
+    ctx.moveTo(960, (canvas.height/6)*4);
+    ctx.lineTo(100, (canvas.height/6)*4);
     //Fifth Line
     ctx.moveTo(0, (canvas.height/6)*5);
-    ctx.lineTo(430, (canvas.height/6)*5);
+    ctx.lineTo(860, (canvas.height/6)*5);
 
     ctx.stroke();
 }
 
 function drawBegin() {
     ctx.beginPath();
-    ctx.rect(0, 0, 50, canvas.height/6);
+    ctx.rect(0, 0, 100, canvas.height/6);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
@@ -97,7 +97,7 @@ function drawBegin() {
 
 function drawEnd() {
     ctx.beginPath();
-    ctx.rect(0, 265, 50, canvas.height/6);
+    ctx.rect(0, 530, 100, canvas.height/6);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
@@ -117,10 +117,10 @@ function draw() {
         if (x + rectWidth > canvas.width){
             x -= 3.5;
         }
-        else if (y + rectHeight >= ((canvas.height/6)*2)+4 && y <= ((canvas.height/6)*2)-4 && x + rectWidth >= rectWidth) {
+        else if (y + rectHeight >= ((canvas.height/6)*2)+8 && y <= ((canvas.height/6)*2)-8 && x + rectWidth >= rectWidth) {
             x -= 3.5;
         }
-        else if (y + rectHeight >= ((canvas.height/6)*4)+4 && y <= ((canvas.height/6)*4)-4 && x + rectWidth >= rectWidth) {
+        else if (y + rectHeight >= ((canvas.height/6)*4)+8 && y <= ((canvas.height/6)*4)-8 && x + rectWidth >= rectWidth) {
             x -= 3.5;
         }
     }
@@ -129,16 +129,16 @@ function draw() {
         if (x < 0){
             x += 3.5;
         }
-        else if (y <= 0 && x <= 430) {
+        else if (y <= 0 && x <= 860) {
             x += 0;
         }
-        else if (y + rectHeight >= (canvas.height/6) && y <= (canvas.height/6)-4 && x <= 430) {
+        else if (y + rectHeight >= (canvas.height/6) && y <= (canvas.height/6)-4 && x <= 860) {
             x += 3.5;
         }
-        else if (y + rectHeight >= ((canvas.height/6)*3)+4 && y <= ((canvas.height/6)*3)-4 && x <= 430) {
+        else if (y + rectHeight >= ((canvas.height/6)*3)+8 && y <= ((canvas.height/6)*3)-8 && x <= 860) {
             x += 3.5;
         }
-        else if (y + rectHeight >= ((canvas.height/6)*5)+4 && y <= ((canvas.height/6)*5)-4 && x <= 430) {
+        else if (y + rectHeight >= ((canvas.height/6)*5)+8 && y <= ((canvas.height/6)*5)-8 && x <= 860) {
             x += 3.5;
         }
     }
@@ -147,19 +147,19 @@ function draw() {
         if (y + rectHeight > canvas.height){
             y -= 3.5;
         }
-        else if (y + rectHeight > canvas.height/6 && y + rectHeight < (canvas.height/6)*2 && x < 430) {
+        else if (y + rectHeight > canvas.height/6 && y + rectHeight < (canvas.height/6)*2 && x < 860) {
             y -= 3.5;
         }
-        else if (y + rectHeight > (canvas.height/6)*2 && y + rectHeight < (canvas.height/6)*3 && x + rectWidth > 50) {
+        else if (y + rectHeight > (canvas.height/6)*2 && y + rectHeight < (canvas.height/6)*3 && x + rectWidth > 100) {
             y -= 3.5;
         }
-        else if (y + rectHeight > (canvas.height/6)*3 && y + rectHeight < (canvas.height/6)*4 && x < 430) {
+        else if (y + rectHeight > (canvas.height/6)*3 && y + rectHeight < (canvas.height/6)*4 && x < 860) {
             y -= 3.5;
         }
-        else if (y + rectHeight > (canvas.height/6)*4 && y + rectHeight < (canvas.height/6)*5 && x + rectWidth > 50) {
+        else if (y + rectHeight > (canvas.height/6)*4 && y + rectHeight < (canvas.height/6)*5 && x + rectWidth > 100) {
             y -= 3.5;
         }
-        else if (y + rectHeight > ((canvas.height/6)*5)+1 && y + rectHeight < canvas.height+1 && x < 430) {
+        else if (y + rectHeight > ((canvas.height/6)*5)+2 && y + rectHeight < canvas.height+1 && x < 860) {
             y -= 3.5;
         }
     }
@@ -168,23 +168,23 @@ function draw() {
         if (y < 0){
             y += 3.5;
         }
-        else if (y + rectHeight > canvas.height/6 && y + rectHeight < (canvas.height/6)*2 && x < 430) {
+        else if (y + rectHeight > canvas.height/6 && y + rectHeight < (canvas.height/6)*2 && x < 860) {
             y += 3.5;
         }
-        else if (y + rectHeight > (canvas.height/6)*2 && y + rectHeight < (canvas.height/6)*3 && x + rectWidth > 50) {
+        else if (y + rectHeight > (canvas.height/6)*2 && y + rectHeight < (canvas.height/6)*3 && x + rectWidth > 100) {
             y += 3.5;
         }
-        else if (y + rectHeight > (canvas.height/6)*3 && y + rectHeight < (canvas.height/6)*4 && x < 430) {
+        else if (y + rectHeight > (canvas.height/6)*3 && y + rectHeight < (canvas.height/6)*4 && x < 860) {
             y += 3.5;
         }
-        else if (y + rectHeight > (canvas.height/6)*4 && y + rectHeight < (canvas.height/6)*5 && x + rectWidth > 50) {
+        else if (y + rectHeight > (canvas.height/6)*4 && y + rectHeight < (canvas.height/6)*5 && x + rectWidth > 100) {
             y += 3.5;
         }
-        else if (y + rectHeight > (canvas.height/6)*5 && y + rectHeight < canvas.height && x < 430) {
+        else if (y + rectHeight > (canvas.height/6)*5 && y + rectHeight < canvas.height && x < 860) {
             y += 3.5;
         }
     }
-    if (x === 0 && y === 266) {
+    if (x === 0 && y === 532) {
         alert("GAME OVER");
         document.location.reload();
         clearInterval(interval); // Needed for Chrome to end game
